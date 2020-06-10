@@ -1,0 +1,19 @@
+{
+  "name": "S3-Product-Import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "S3ProductImport.js",
+  "dependencies": {
+    "cfn-response": "^1.0.1",
+    "consul": "^0.34.1",
+    "node-vault": "^0.9.10",
+    "util": "^0.12.3",
+    "vault-auth-aws": "^0.1.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

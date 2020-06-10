@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  S3ProductImport:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: S3ProductImport.handler
+      Runtime: nodejs12.x
+      Timeout: 60
+      Policies: AWSLambdaExecute
+      Events:
+        S3ProductImportEvent:
+          Type: S3
+          Properties:
+            Bucket: !Ref ProductImportBucket
+            Events: s3:ObjectCreated:*
+
+  ProductImportBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: ep-bcc-product-import
+
+  AllowS3ToCallLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref S3ProductImport
+      Principal: s3.amazonaws.com
+      SourceArn: arn:aws:s3:::ep-bcc-product-import

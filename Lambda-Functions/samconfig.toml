@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "ep-bcc"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-195uy2ldxleqo"
+s3_prefix = "ep-bcc"
+region = "us-west-2"
+capabilities = "CAPABILITY_IAM"
+
